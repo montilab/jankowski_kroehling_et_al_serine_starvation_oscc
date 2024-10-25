@@ -126,3 +126,19 @@ EnhancedVolcano(top.table,
                 widthConnectors = 0.5, 
                 max.overlaps = Inf) + ggstyle()
 dev.off()
+
+#bargraph
+library(dplyr)
+pdf('./metabolomics_aa_barplot.pdf', height = 5, width = 10)
+top.table[aa,] %>%
+  mutate(sig = case_when(adj.P.Val < 0.01 ~ "adj.p.val < 0.01",
+                         adj.P.Val >= 0.01 ~ "adj.p.val >= 0.01")) %>%
+  ggplot() + 
+  geom_col(aes(x=reorder(metabolite, -adj.P.Val), y=MUP, fill=sig)) +
+  scale_fill_manual(values=c("blue","grey")) + 
+  xlab("Log2 fold change") +
+  ylab("amino acid") +
+  theme(legend.position="none") +
+  ggstyle() + 
+  theme(axis.text.x = element_text(angle = 45, vjust = 1.05, hjust=1))
+dev.off()
