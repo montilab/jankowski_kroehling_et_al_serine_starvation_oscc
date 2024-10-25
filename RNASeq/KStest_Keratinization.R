@@ -1,3 +1,6 @@
+#read in DESeq2 outputs
+hh <- read.csv('./results/DESeq2/20230501_H_DEout.csv')
+cc <- read.csv('./results/DESeq2/20230501_C_DEout.csv')
 
 ### comparison to keratinization sig
 ksig <- c("A2ML1", "A4GALT", "AADACL3", "ABCC5", "ABCG2", "ABHD2", "ABO", "ACER2", "ACKR2", "ACOT11", 
