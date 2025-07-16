@@ -5,7 +5,7 @@
 # Input parameters
 BAM_FILE=$1
 PEAK_FILE=$2
-MIN_OVERLAP=$3
+MIN_OVERLAP=$3 #we used 0.1
 
 # Count total fragments
 TOTAL_FRAGMENTS=$(samtools view -c -F 260 ${BAM_FILE})
